@@ -30,10 +30,18 @@
 							<td>{{item.userId}}</td>
 							<td>{{item.sentDate ? convertDate(item.sentDate) : 'Chưa rõ'}}</td>
 							<td>{{item.deliveryDate ? convertDate(item.deliveryDate) : 'Chưa rõ'}}</td>
-							<td>{{item.status == 0 ? 'Chưa duyệt' : 'Đã duyệt'}}</td>
-							<td class="cell-action-detail">
-								<button type="button" class="btn btn-warning" (click)="approverAdopt(item)" style="margin-right: 8px;">Duyệt</button>
-								<button type="button" class="btn btn-danger" (click)="approverAdopt(item)">Từ chối</button>
+							<td>{{getStatus(item.status)}}</td>
+							<td class="cell-action-detail text-center">
+								<button type="button" class="btn btn-primary" (click)="adoptDetail(item)"
+										style="margin-right: 8px;">Chi tiết
+								</button>
+								<span *ngIf="item.status == 0">
+									<button type="button" class="btn btn-warning" (click)="approverAdopt(item)"
+											style="margin-right: 8px;">Duyệt
+									</button>
+									<button type="button" class="btn btn-danger" (click)="rejectAdopt(item)">Từ chối
+									</button>
+								</span>
 							</td>
 						</tr>
 						</tbody>

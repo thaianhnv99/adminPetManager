@@ -59,27 +59,46 @@ export class AdoptPetListComponent implements OnInit {
 	}
 
 	approverAdopt(data: any) {
-		// let body = {
-		// 	orderId: data.orderId,
-		// 	status: 1
-		// };
-		// this.adoptPetService.aproverOrderInfo(body).pipe(finalize(() => {
-		// 	this.spinnerService.hide();
-		// })).subscribe(res => {
-		// 	console.log(res);
-		// 	if (res.body.key === 'SUCCESS') {
-		// 		this.doSearch(1);
-		// 	} else {
-		// 		alert('Error');
-		// 	}
-		// }, error => {
-		// 	alert('Error');
-		// });
-
 		const modalRef = this.modal.open(AdoptPetConfirmComponent, {size: 'sm'});
-		// modalRef.componentInstance.petItem = this.petItem;
+		modalRef.componentInstance.petItem = data;
 		modalRef.result.then(result => {
+			this.doSearch(1);
 		});
+	}
+
+	rejectAdopt(data: any) {
+		this.spinnerService.show();
+		let body = {
+			orderId: data.orderId,
+			approvalDate: new Date(),
+			status: 2
+		};
+		this.adoptPetService.aproverOrderInfo(body).pipe(finalize(() => {
+			this.spinnerService.hide();
+		})).subscribe(res => {
+			console.log(res);
+			if (res.body.key === 'SUCCESS') {
+				this.doSearch(1);
+			} else {
+				alert('Error');
+			}
+		}, error => {
+			alert('Error');
+		});
+	}
+
+	getStatus(data: any) {
+		if (data == 0) {
+			return 'Chưa duyệt';
+		} else if (data == 1) {
+			return 'Đã duyệt';
+		} else {
+			return 'Từ chối';
+		}
+	}
+
+	adoptDetail(event: any) {
+		console.log(event);
 	}
 
 	convertDate(date: any) {

@@ -20,7 +20,7 @@
 					<div class="input-icon-datepicker right-distance">
 						<input class="form-control"
 							   style="width: 189px;background-color: white !important;"
-							   placeholder="DD/MM/YYYY" name="dp"
+							   placeholder="dd/mm/yyyy" name="dp"
 							   [readOnly]="true"
 							   (dateSelect)="loadDate($event)"
 							   formControlName="sentDate"
@@ -38,7 +38,7 @@
 	<div class="card-footer justify-content-between text-right">
 		<button type="submit" (click)="sentAdopt()"
 				[disabled]="inputForm.invalid"
-				class="btn btn-danger btn-shadow mr-2">Gửi
+				class="btn btn-danger btn-shadow mr-2">Duyệt
 		</button>
 		<button type="button" (click)="closed()"
 				class="btn btn-danger btn-shadow mr-2">Đóng
