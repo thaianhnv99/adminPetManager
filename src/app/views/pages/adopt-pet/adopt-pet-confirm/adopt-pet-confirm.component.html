@@ -22,6 +22,7 @@
 							   style="width: 189px;background-color: white !important;"
 							   placeholder="dd/mm/yyyy" name="dp"
 							   [readOnly]="true"
+							   [minDate]="minDate"
 							   (dateSelect)="loadDate($event)"
 							   formControlName="sentDate"
 							   ngbDatepicker #from="ngbDatepicker">

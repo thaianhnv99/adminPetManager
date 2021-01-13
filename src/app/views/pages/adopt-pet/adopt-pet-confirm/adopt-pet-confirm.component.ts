@@ -18,6 +18,7 @@ export class AdoptPetConfirmComponent implements OnInit {
 	inputForm = this.fb.group({
 		sentDate: ['', Validators.required],
 	});
+	minDate: any = null;
 
 	constructor(
 		public activeModal: NgbActiveModal,
@@ -33,6 +34,7 @@ export class AdoptPetConfirmComponent implements OnInit {
 	}
 
 	buildForm() {
+		this.minDate = this.buildFormatDateIn(new Date());
 	}
 
 	loadDate(ev: any) {
@@ -60,6 +62,17 @@ export class AdoptPetConfirmComponent implements OnInit {
 		}, error => {
 			alert('Error');
 		});
+	}
+
+	buildFormatDateIn(date: any) {
+		let formatDate = moment(date, 'DD/MM/YYYY').toDate();
+		console.log(date);
+		let beforeFormmatDate: NgbDateStruct = {
+			day: formatDate.getDate(),
+			month: formatDate.getMonth() + 1,
+			year: formatDate.getFullYear()
+		};
+		return beforeFormmatDate;
 	}
 
 	buildFormatDateOut(date: NgbDateStruct) {
