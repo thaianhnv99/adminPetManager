@@ -1,0 +1,47 @@
+<div class="card card-custom">
+	<div class="card-header">
+		<div class="card-title">
+			<h5 class="card-label" style="float:left;">
+				Thông tin nhận nuôi PET
+			</h5>
+			<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+					(click)="activeModal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	<div style="margin: 45px;text-align: center;">
+		<form name="editForm" role="form" novalidate [formGroup]="inputForm" #form='ngForm'>
+			<div class="form-group">
+				<div class="row">
+					<label>Ngày giao vật nuôi</label>
+				</div>
+				<div class="row">
+					<div class="input-icon-datepicker right-distance">
+						<input class="form-control"
+							   style="width: 189px;background-color: white !important;"
+							   placeholder="DD/MM/YYYY" name="dp"
+							   [readOnly]="true"
+							   (dateSelect)="loadDate($event)"
+							   formControlName="sentDate"
+							   ngbDatepicker #from="ngbDatepicker">
+						<span class="right-icon aline-icon cursor-pointer" (click)="from.toggle();">
+                        <i class="fas fa-chevron-down icon-sm"></i>
+                      </span>
+					</div>
+<!--					<input [maxLength]="35" class="form-control"-->
+<!--						   formControlName="sentDate">-->
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="card-footer justify-content-between text-right">
+		<button type="submit" (click)="sentAdopt()"
+				[disabled]="inputForm.invalid"
+				class="btn btn-danger btn-shadow mr-2">Gửi
+		</button>
+		<button type="button" (click)="closed()"
+				class="btn btn-danger btn-shadow mr-2">Đóng
+		</button>
+	</div>
+</div>

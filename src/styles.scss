@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~highlight.js/styles/googlecode.css";
+
+// header base skins
+.kt-header-base-light {
+	@import "sass/global/layout/header/skins/base/light.scss";
+}
+.kt-header-base-dark {
+	@import "sass/global/layout/header/skins/base/dark.scss";
+}
+
+// header menu skins
+.kt-header-menu-light {
+	@import "sass/global/layout/header/skins/menu/light.scss";
+}
+.kt-header-menu-dark {
+	@import "sass/global/layout/header/skins/menu/dark.scss";
+}
+
+// brand skins
+.kt-brand-dark {
+	@import "sass/global/layout/brand/skins/dark.scss";
+}
+.kt-brand-light {
+	@import "sass/global/layout/brand/skins/light.scss";
+}
+
+// aside skins
+.kt-aside-dark {
+	@import "sass/global/layout/aside/skins/dark.scss";
+}
+.kt-aside-light {
+	@import "sass/global/layout/aside/skins/light.scss";
+}
+
+// hide bootstrap dropdown arrow globally
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+	width: 100% !important;
+}
+
+.position-static {
+	position: static;
+}
+
+////////Date picker////////
+.right-icon {
+	right: 0;
+	margin-right: 12px;
+	left: auto !important;
+}
+
+.input-icon-datepicker {
+	position: relative;
+
+	.aline-icon {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		i {
+			line-height: 0;
+			&:after,
+			&:before {
+				line-height: 0;
+			}
+		}
+	}
+
+	&.input-icon-right {
+		span {
+			right: 0;
+			left: auto;
+		}
+	}
+}
+
+.input-icon-datepicker input {
+	cursor: unset;
+	background-color: #F6F6F6 !important;
+	font: normal normal normal 15px/22px Manrope !important;
+}
+////////Date picker////////

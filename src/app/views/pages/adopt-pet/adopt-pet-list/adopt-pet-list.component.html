@@ -1,0 +1,51 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'Danh sách duyệt nhận nuôi'" [class]="'kt-portlet__head--lg'">
+		<!--		<ng-container ktPortletTools>-->
+		<!--			<button [routerLink]="['../users/add']" mat-raised-button color="primary" matTooltip="Create new User">-->
+		<!--			</button>-->
+		<!--		</ng-container>-->
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<div class="mat-table__wrapper">
+			<div class="col-md-12"
+				 [ngClass]="{'content-item text-center': !dataItemShow || dataItemShow.length == 0}">
+				<div *ngIf="dataItemShow && dataItemShow.length > 0" class="table-responsive">
+					<table class="table seanet-table">
+						<thead>
+						<tr>
+							<th scope="col">STT</th>
+							<th scope="col">Mã đơn nhận</th>
+							<th scope="col">Mã vật nuôi</th>
+							<th scope="col">Ngày gửi đơn</th>
+							<th scope="col">Ngày giao</th>
+							<th scope="col">Trạng thái</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr
+							*ngFor="let item of dataItemShow | paginate: { itemsPerPage: page.pageSize,currentPage: page.page},let i = index">
+							<td class="cell-center">{{i + 1 + ((page.page - 1) * page.pageSize)}}</td>
+							<td>{{item.orderId}}</td>
+							<td>{{item.userId}}</td>
+							<td>{{item.sentDate ? convertDate(item.sentDate) : 'Chưa rõ'}}</td>
+							<td>{{item.deliveryDate ? convertDate(item.deliveryDate) : 'Chưa rõ'}}</td>
+							<td>{{item.status == 0 ? 'Chưa duyệt' : 'Đã duyệt'}}</td>
+							<td class="cell-action-detail">
+								<button type="button" class="btn btn-warning" (click)="approverAdopt(item)" style="margin-right: 8px;">Duyệt</button>
+								<button type="button" class="btn btn-danger" (click)="approverAdopt(item)">Từ chối</button>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="seanet-pagination-group">
+						<seanet-pagination
+							(pageChange)="page.pageNumber = $event"
+							(showChangeItem)="showChangeItem($event)"></seanet-pagination>
+					</div>
+				</div>
+			</div>
+			<div class="mat-table__message" *ngIf="!dataItemShow.length">Không có bản ghi</div>
+		</div>
+	</kt-portlet-body>
+</kt-portlet>
