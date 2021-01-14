@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {OrdersService} from '../../../../core/e-commerce/_services/orders.service';
@@ -94,6 +94,6 @@ export class AdoptPetConfirmComponent implements OnInit {
 	}
 
 	closed() {
-		this.activeModal.close();
+		this.activeModal.close('Close');
 	}
 }

@@ -1,0 +1,70 @@
+<div class="card card-custom">
+	<div class="card-header">
+		<div class="card-title">
+			<h5 class="card-label" style="float:left;">
+				Thông tin nhận nuôi PET
+			</h5>
+			<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+					(click)="activeModal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	<div style="margin: 45px 5px 45px 5px;;text-align: center;">
+		<form name="editForm" role="form" novalidate [formGroup]="inputForm" #form='ngForm'>
+			<div class="form-group row align-items-baseline">
+				<label class="col-md-2">Mã đơn nhận</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="orderId"/>
+				</div>
+				<label class="col-md-2">Mã vật nuôi</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="petId"/>
+				</div>
+			</div>
+			<div class="form-group row align-items-baseline">
+				<label class="col-md-2">Tên vật nuôi</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="petName"/>
+				</div>
+				<label class="col-md-2">Trạng thái</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="status"/>
+				</div>
+			</div>
+			<div class="form-group row align-items-baseline">
+				<label class="col-md-2">Ngày gửi đơn</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="sentDate"/>
+				</div>
+				<label class="col-md-2">Ngày giao</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="deliveryDate"/>
+				</div>
+			</div>
+			<div class="form-group row align-items-baseline">
+				<label class="col-md-2">Lý do</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						   formControlName="reason"/>
+				</div>
+				<label class="col-md-2">Khai ĐK</label>
+				<div class="col-md-4">
+					<textarea type="text" class="form-control"
+							  formControlName="conditions"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="card-footer justify-content-between text-right">
+		<button type="button" (click)="closed()"
+				class="btn btn-danger btn-shadow mr-2">Đóng
+		</button>
+	</div>
+</div>

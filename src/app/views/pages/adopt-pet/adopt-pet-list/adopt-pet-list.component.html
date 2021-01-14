@@ -16,6 +16,7 @@
 							<th scope="col">STT</th>
 							<th scope="col">Mã đơn nhận</th>
 							<th scope="col">Mã vật nuôi</th>
+							<th scope="col">Tên vật nuôi</th>
 							<th scope="col">Ngày gửi đơn</th>
 							<th scope="col">Ngày giao</th>
 							<th scope="col">Trạng thái</th>
@@ -27,12 +28,13 @@
 							*ngFor="let item of dataItemShow | paginate: { itemsPerPage: page.pageSize,currentPage: page.page},let i = index">
 							<td class="cell-center">{{i + 1 + ((page.page - 1) * page.pageSize)}}</td>
 							<td>{{item.orderId}}</td>
-							<td>{{item.userId}}</td>
+							<td>{{item.petId}}</td>
+							<td>{{item.petName}}</td>
 							<td>{{item.sentDate ? convertDate(item.sentDate) : 'Chưa rõ'}}</td>
 							<td>{{item.deliveryDate ? convertDate(item.deliveryDate) : 'Chưa rõ'}}</td>
 							<td>{{getStatus(item.status)}}</td>
 							<td class="cell-action-detail text-center">
-								<button type="button" class="btn btn-primary" (click)="adoptDetail(item)"
+								<button type="button" class="btn btn-primary" (click)="adoptPetDetail(item)"
 										style="margin-right: 8px;">Chi tiết
 								</button>
 								<span *ngIf="item.status == 0">

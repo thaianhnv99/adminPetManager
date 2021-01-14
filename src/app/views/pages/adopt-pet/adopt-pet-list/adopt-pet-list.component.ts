@@ -8,6 +8,7 @@ import {finalize} from 'rxjs/operators';
 import * as moment from 'moment';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AdoptPetConfirmComponent} from '../adopt-pet-confirm/adopt-pet-confirm.component';
+import {AdoptPetDetailComponent} from '../adopt-pet-detail/adopt-pet-detail.component';
 
 @Component({
 	selector: 'kt-adopt-pet-list',
@@ -58,11 +59,22 @@ export class AdoptPetListComponent implements OnInit {
 		});
 	}
 
+	adoptPetDetail(data: any) {
+		const modalRef = this.modal.open(AdoptPetDetailComponent, {size: 'lg'});
+		modalRef.componentInstance.orderData = data;
+		modalRef.result.then(result => {
+			this.doSearch(1);
+		}, (reason) => {
+		});
+	}
+
 	approverAdopt(data: any) {
 		const modalRef = this.modal.open(AdoptPetConfirmComponent, {size: 'sm'});
+
 		modalRef.componentInstance.petItem = data;
 		modalRef.result.then(result => {
 			this.doSearch(1);
+		}, (reason) => {
 		});
 	}
 
@@ -95,10 +107,6 @@ export class AdoptPetListComponent implements OnInit {
 		} else {
 			return 'Từ chối';
 		}
-	}
-
-	adoptDetail(event: any) {
-		console.log(event);
 	}
 
 	convertDate(date: any) {

@@ -34,13 +34,15 @@ import {AdoptPetConfirmComponent} from './adopt-pet-confirm/adopt-pet-confirm.co
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {OrdersService} from '../../../core/e-commerce/_services/orders.service';
 import {NgbDatepickerModule} from '../../../core/common/component/ngbDatepicker/datepicker.module';
+import { AdoptPetDetailComponent } from './adopt-pet-detail/adopt-pet-detail.component';
 
 
 @NgModule({
-	entryComponents: [AdoptPetConfirmComponent],
+	entryComponents: [AdoptPetConfirmComponent, AdoptPetDetailComponent],
 	declarations: [
 		AdoptPetListComponent,
-		AdoptPetConfirmComponent
+		AdoptPetConfirmComponent,
+		AdoptPetDetailComponent
 	],
 	imports: [
 		CommonModule,
