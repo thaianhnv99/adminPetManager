@@ -13,6 +13,11 @@ import * as moment from 'moment';
 })
 export class AdoptPetDetailComponent implements OnInit {
 	inputForm = this.fb.group({
+		userId: [{value: '', disabled: true}],
+		name: [{value: '', disabled: true}],
+		phone: [{value: '', disabled: true}],
+		address: [{value: '', disabled: true}],
+
 		orderId: [{value: '', disabled: true}],
 		petId: [{value: '', disabled: true}],
 		petName: [{value: '', disabled: true}],
@@ -37,6 +42,11 @@ export class AdoptPetDetailComponent implements OnInit {
 	ngOnInit() {
 		if (this.orderData) {
 			this.inputForm.patchValue({
+				userId: this.orderData.userId,
+				name: this.orderData.name,
+				phone: this.orderData.phone,
+				address: this.orderData.address,
+
 				orderId: this.orderData.orderId,
 				petId: this.orderData.petId,
 				petName: this.orderData.petName,

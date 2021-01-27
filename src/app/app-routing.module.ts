@@ -20,6 +20,10 @@ const routes: Routes = [
 				loadChildren: () => import('app/views/pages/adopt-pet/adopt-pet.module').then(m => m.AdoptPetModule),
 			},
 			{
+				path: 'type-pet',
+				loadChildren: () => import('app/views/pages/type-pet/type-pet.module').then(m => m.TypePetModule),
+			},
+			{
 				path: 'error/403',
 				component: ErrorPageComponent,
 				data: {
@@ -30,7 +34,7 @@ const routes: Routes = [
 				},
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
-			{path: '', redirectTo: 'adopt-pet', pathMatch: 'full'},
+			{path: '', redirectTo: '', pathMatch: 'full'},
 			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
 		],
 	},

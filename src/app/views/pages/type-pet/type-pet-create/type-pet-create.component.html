@@ -1,0 +1,43 @@
+<div class="card card-custom">
+	<div class="card-header">
+		<div class="card-title">
+			<h5 class="card-label" style="float:left;">
+				Thông tin loại vật nuôi
+			</h5>
+			<button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+					(click)="activeModal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	<div style="margin: 45px 5px 45px 5px;;text-align: center;">
+		<form name="editForm" role="form" novalidate [formGroup]="inputForm" #form='ngForm'>
+			<div class="form-group row align-items-baseline"
+				 *ngIf="!isAdd"
+				 style="margin-right: 20px;">
+				<label class="col-md-4">Mã loại vật nuôi</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						   formControlName="petTypeId"/>
+				</div>
+			</div>
+			<div class="form-group row align-items-baseline"
+				 style="margin-right: 20px;">
+				<label class="col-md-4">Tên loại vật nuôi</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						   formControlName="petTypeName"/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="card-footer justify-content-between text-right">
+		<button type="button" (click)="save()"
+				[disabled]="inputForm.invalid"
+				class="btn btn-danger btn-shadow mr-2">Lưu
+		</button>
+		<button type="button" (click)="closed()"
+				class="btn btn-danger btn-shadow mr-2">Đóng
+		</button>
+	</div>
+</div>

@@ -62,6 +62,7 @@ import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
 import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
 import {NgxPaginationModule} from './core/common/component/ngx-pagination/ngx-pagination.module';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 // import {ToastrModule} from 'ngx-toastr';
 
 // tslint:disable-next-line:class-name
@@ -114,12 +115,12 @@ export function hljsLanguages(): HighlightLanguage[] {
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),
 		ThemeModule,
-		// ToastrModule.forRoot({
-		// 	timeOut: 5000,
-		// 	positionClass: 'toast-bottom-right',
-		// 	progressBar: true,
-		// 	preventDuplicates: true
-		// }),
+		ToastrModule.forRoot({
+			timeOut: 5000,
+			positionClass: 'toast-bottom-right',
+			progressBar: true,
+			preventDuplicates: true
+		}),
 		NgxSpinnerModule,
 	],
 	exports: [],
@@ -157,7 +158,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService,
-		NgxSpinnerService
+		NgxSpinnerService,
 	],
 	bootstrap: [AppComponent]
 })

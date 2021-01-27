@@ -1,0 +1,51 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'Danh sách loại vật nuôi'" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<button mat-raised-button color="primary" (click)="createType()">Tạo mới</button>
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<div class="mat-table__wrapper">
+			<div class="col-md-12"
+				 [ngClass]="{'content-item text-center': !dataItemShow || dataItemShow.length == 0}">
+				<div *ngIf="dataItemShow && dataItemShow.length > 0" class="table-responsive">
+					<table class="table seanet-table">
+						<thead>
+						<tr>
+							<th scope="col">STT</th>
+							<th scope="col">Mã loại vật nuôi</th>
+							<th scope="col">Tên loại vật nuôi</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr
+							*ngFor="let item of dataItemShow | paginate: { itemsPerPage: page.pageSize,currentPage: page.page},let i = index">
+							<td class="cell-center">{{i + 1 + ((page.page - 1) * page.pageSize)}}</td>
+							<td>{{item.petTypeId}}</td>
+							<td>{{item.petTypeName}}</td>
+							<td class="cell-action-detail text-center">
+								<button type="button" class="btn btn-info" (click)="typePetDetail(item)"
+										style="margin: 0 4px;">Chi tiết
+								</button>
+								<button type="button" class="btn btn-warning" (click)="typePetEdit(item)"
+										style="margin: 0 4px;">Sửa
+								</button>
+								<button type="button" class="btn btn-danger" (click)="typePetDelete(item)"
+										style="margin: 0 4px;">Xóa
+								</button>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<div>
+						<seanet-pagination
+							(pageChange)="page.page = $event"
+						></seanet-pagination>
+					</div>
+				</div>
+			</div>
+			<div class="mat-table__message" *ngIf="!dataItemShow.length">Không có bản ghi</div>
+		</div>
+	</kt-portlet-body>
+</kt-portlet>
